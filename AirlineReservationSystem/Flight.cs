@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirlineReservationSystem
 {
-    internal class Flight
+    public class Flight
     {
         // string flightNumber;
         // date of flight
