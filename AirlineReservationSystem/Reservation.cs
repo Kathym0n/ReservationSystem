@@ -8,6 +8,22 @@ namespace AirlineReservationSystem
 {
     public class Reservation
     {
+        // Verknüpfung: Customer, Flight, Seating
+        Customer customer;
+        Flight flight;
+        Seating Seating { get; set; }
+        
 
+        public Reservation() { }
+
+        public void ConfirmReservation()
+        {
+
+        }
+
+        public void CancelReservation() 
+        { 
+        
+        }
     }
 }

@@ -8,10 +8,9 @@ namespace AirlineReservationSystem
 {
     public class Seating :IBookable
     {
-            string seatingNumber;
+            string seatNumber;
             bool status;
-            decimal price;
-            int quantity;
+            seatClass
 
         public Seating(int row, char letter) 
         {
