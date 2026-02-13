@@ -9,20 +9,26 @@ namespace AirlineReservationSystem
     public class Customer
     {
 
-        //public int Id { get; set; }
-        //public string Name { get; set; }
-        //public string Email { get; set; }
-        //public string PhoneNumber { get; set; }
-        //public string Address { get; set; }
-        //public List<Reservation> GetReservations{ get; }
+        public int customerID;
+        public string name;
+        public string email;
+        public string phoneNumber;
+        public string address;
+        public List<Reservation> reservations { get; }
 
-        //string name;
-        //string eMail;
+
         //string password;
-        //string phoneNumber;
-        //string address;
-        // tickets
-        
-        
+
+
+        public void ReserveSeating()
+        {
+
+        }
+
+        public void BookFlight(int flightID)
+        {
+
+        }
+
     }
 }

@@ -13,8 +13,13 @@ namespace AirlineReservationSystem
         Flight flight;
         Seating Seating { get; set; }
         
-
-        public Reservation() { }
+        /// <summary>
+        /// Initializes a new instance of the Reservation class.
+        /// </summary>
+        public Reservation() 
+        { 
+            
+        }
 
         public void ConfirmReservation()
         {

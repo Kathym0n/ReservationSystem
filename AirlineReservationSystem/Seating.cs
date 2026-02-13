@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,22 +10,54 @@ namespace AirlineReservationSystem
 {
     public class Seating :IBookable
     {
-            string seatNumber;
-            bool status;
-            seatClass
+        public int Row;
+        public int MaxRow = 30;
+        public string SeatLetter;
+        public char MaxLetter = 'F';
+        public bool Status;
+        // seatClass;
 
-        public Seating(int row, char letter) 
+        public Seating(int row, char seatLetter)
         {
-            
+            Row = row;
+            SeatLetter = $"{seatLetter}";
+            string seatNumber = $"{row}{seatLetter}";
         }
-        public void Book()
-        {
 
+        public List<string> GetSeats(int maxRow, char maxLetter) 
+        {
+            List<string> seatList = new List<string>();
+            string seatNumber;
+
+            for (int i = 1; i <= maxRow; i++)
+            {
+                for (char j = 'A'; j <= maxLetter; j++)
+                {
+                    seatNumber = $"{i}{j}";
+                    seatList.Add(seatNumber);
+                }
+            }
+            return seatList;
         }
 
         public void Reserve()
         {
 
+        }
+
+        public void Book()
+        {
+
+        }
+
+        public bool IsReserved()
+        {
+            return status;
+        }
+
+        public bool IsBooked()
+        {
+            return status;
         }
 
     }

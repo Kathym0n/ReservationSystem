@@ -8,9 +8,13 @@ namespace AirlineReservationSystem
 {
     public interface IBookable
     {
-        bool Reserve(); // Sitz vorrübergehend blockieren
+        void Reserve(); // Sitz vorrübergehend blockieren
+
+        void Book();    // Sitz endgültig Customer zuordnen
+
+        bool IsReserved(); // Sitz auf Reservierung prüfen
         
-        bool Book();    // Sitz endgültig Customer zuordnen
+        bool IsBooked();    // Sitz aud Buchung prüfen
 
         // Status-Management: frei/reserviert/gebucht
     }
