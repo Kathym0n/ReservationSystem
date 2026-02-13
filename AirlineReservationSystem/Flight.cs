@@ -9,27 +9,35 @@ namespace AirlineReservationSystem
 {
     public class Flight
     {
-        //public int flightID;
-        //public DateOnly dateOfFlight;
-        //public string destination;
-        //public decimal businessPrice;
-        //public decimal economyPrice;
-        //public List<Seating> GetSeatings {  get; set; }
-        //public FlightStatus currentStatus { get; set; } 
+        public int FlightID;
+        public DateOnly DateOfFlight;
+        public string Destination;
+        public decimal BusinessPrice;
+        public decimal EconomyPrice;
+        public List<Seat> Seating { get; }
+        public bool currentStatus { get; }
 
-        //// launch time
-        //// destination time
-        //// source airport
-        //// destination airport
+        // source airport
+        // destination airport
 
-        //public decimal GetPrice(int seatNumber)
-        //{
+        public Flight()
+        {
+            FlightID = 0;
 
-        //}
+        }
 
-        //public List<int> HasAvailableSeats(int flightID)
-        //{
+        public decimal GetPrice(int seatNumber)
+        {
+            decimal price = 0;
+            return price;
 
-        //}
+        }
+
+        public List<Flight> HasAvailableSeats(int flightID)
+        {
+            List<Flight> flights = new List<Flight>();
+            return flights;
+
+        }
     }
 }

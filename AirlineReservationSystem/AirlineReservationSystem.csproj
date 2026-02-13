@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Remove="BusinessClass.cs" />
+    <Compile Remove="Cell.cs" />
     <Compile Remove="EconomyClass.cs" />
   </ItemGroup>
 

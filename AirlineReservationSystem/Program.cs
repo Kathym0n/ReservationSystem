@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Willkommen beim Reservierungssystem für Ihren Flug!");
-            Seating testSeating = new Seating();
+            Seat testSeating = new Seat(1, 'F');
 
             foreach (var item in testSeating.GetSeats(30, 'F'))
             {

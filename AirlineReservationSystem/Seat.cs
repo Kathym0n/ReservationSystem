@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AirlineReservationSystem
 {
-    public class Seating :IBookable
+    public class Seat :IBookable
     {
         public int Row;
         public int MaxRow = 30;
@@ -17,7 +17,7 @@ namespace AirlineReservationSystem
         public bool Status;
         // seatClass;
 
-        public Seating(int row, char seatLetter)
+        public Seat(int row, char seatLetter)
         {
             Row = row;
             SeatLetter = $"{seatLetter}";
@@ -52,12 +52,12 @@ namespace AirlineReservationSystem
 
         public bool IsReserved()
         {
-            return status;
+            return Status;
         }
 
         public bool IsBooked()
         {
-            return status;
+            return Status;
         }
 
     }

@@ -6,18 +6,25 @@ using System.Threading.Tasks;
 
 namespace AirlineReservationSystem
 {
+    /// <summary>
+    /// Represents a reservation containing flight, customer, and seat information.
+    /// </summary>
     public class Reservation
     {
-        // Verknüpfung: Customer, Flight, Seating
-        Customer customer;
-        Flight flight;
-        Seating Seating { get; set; }
+        Reservation ReservationID;
+        Flight FlightID;
+        Customer CustomerID;
+        List<Seat> Seats;
         
         /// <summary>
-        /// Initializes a new instance of the Reservation class.
+        /// 
         /// </summary>
         public Reservation() 
         { 
+            ReservationID = new Reservation();
+            FlightID = new Flight();
+            CustomerID = new Customer();
+            Seats = new List<Seat>();
             
         }
 
