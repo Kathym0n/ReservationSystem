@@ -11,12 +11,17 @@
             {
                 Console.WriteLine($"{item}");
             }
+            BookingSystem TestSystem = new BookingSystem();
+            Airplane Test = TestSystem.CreateAirplane("Kathys Jet");
+            Airplane Test2 = TestSystem.CreateAirplane("Felix' Jet");
+            Console.WriteLine(Test);
+            Console.WriteLine(Test2);
 
             //Console.WriteLine("Geben Sie die FlugID an: ");
             //string FlugID = Console.ReadLine();
             //Console.WriteLine($"Vielen Dank. Bei Flug {FlugID} haben Sie die Wahl aus den folgenden freien Sitzen: ");
             //Console.WriteLine(Seating( FlugID ));
-        
+
         }
 
         // TODO: Get input

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirlineReservationSystem
 {
-    public class Customer
+    public class Customer 
     {
 
         public int customerID;

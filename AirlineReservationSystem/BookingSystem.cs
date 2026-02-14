@@ -8,14 +8,25 @@ namespace AirlineReservationSystem
 {
     public class BookingSystem
     {
-        List<Customer> Customer { get; }
-        List<Flight> Flight { get; }
-        List<Reservation> Reservation { get; }
-        List<Airplane> Airplane { get; }
+        List<Customer> Customers { get; }
+        List<Flight> Flights { get; }
+        List<Reservation> Reservations { get; }
+        List<Airplane> Airplanes { get; set; }
         
         public BookingSystem() 
-        { 
-            
+        {
+            Customers = new List<Customer>();
+            Flights = new List<Flight>();
+            Reservations = new List<Reservation>();
+            Airplanes = new List<Airplane>();
+        }
+
+        public Airplane CreateAirplane(string name)
+        {
+            int id = Utilities.CreateNewID(Airplanes);
+            Airplane newAirplane = new Airplane(id, name);
+            Airplanes.Add(newAirplane);
+            return newAirplane;
         }
 
         public decimal GetPrice(SeatClass seatClass)

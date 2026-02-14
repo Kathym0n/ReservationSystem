@@ -6,14 +6,23 @@ using System.Threading.Tasks;
 
 namespace AirlineReservationSystem
 {
-    struct Airplane
+    public class Airplane : IHasID
     {
-        public int AirplaneID;
+        public int ID { get; set; }
         public List<Seat> Seats;
+        public string Name;
 
-        public Airplane() 
+        public Airplane(int planeID, string name) 
         {
-            
+            ID = planeID;
+            Seats = new List<Seat>();
+            Name = name;
+        }
+
+        public override string ToString()
+        {
+            return $"{Name} {ID}";
+            ;
         }
 
         public List<Seat> GetSeats()
