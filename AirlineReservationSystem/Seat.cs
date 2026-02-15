@@ -10,36 +10,29 @@ namespace AirlineReservationSystem
 {
     public class Seat :IBookable
     {
-        public int Row;
-        public int MaxRow = 30;
-        public string SeatLetter;
-        public char MaxLetter = 'F';
-        public bool Status;
-        // seatClass;
 
-        public Seat(int row, char seatLetter)
+        public string SeatNumber; 
+        public int Row;
+        public string SeatColumn;
+        public SeatStatus Status;
+        public SeatClass SeatClass { get; set; }
+
+        public Seat(int row, char seatColumn, SeatClass seatClass)
         {
             Row = row;
-            SeatLetter = $"{seatLetter}";
-            string seatNumber = $"{row}{seatLetter}";
+            SeatColumn = $"{seatColumn}";
+            string seatNumber = $"{row}{seatColumn}";
+            SeatNumber = seatNumber;
+            Status = SeatStatus.Free;
+            SeatClass = seatClass;
         }
 
-        public List<string> GetSeats(int maxRow, char maxLetter) 
+        public override string ToString()
         {
-            List<string> seatList = new List<string>();
-            string seatNumber;
-
-            for (int i = 1; i <= maxRow; i++)
-            {
-                for (char j = 'A'; j <= maxLetter; j++)
-                {
-                    seatNumber = $"{i}{j}";
-                    seatList.Add(seatNumber);
-                }
-            }
-            return seatList;
+            return $"{Row}{SeatColumn} ({SeatClass})";
         }
 
+        // TODO: Methoden
         public void Reserve()
         {
 
@@ -52,12 +45,14 @@ namespace AirlineReservationSystem
 
         public bool IsReserved()
         {
-            return Status;
+            bool status = true;
+            return status;
         }
 
         public bool IsBooked()
         {
-            return Status;
+            bool status = true;
+            return status;
         }
 
     }

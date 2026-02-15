@@ -7,25 +7,39 @@ using System.Threading.Tasks;
 
 namespace AirlineReservationSystem
 {
-    public class Flight
+    public class Flight : IHasID
     {
-        public int FlightID;
+        public int ID { get; set; }
+        public Airplane Plane { get; set; }
+        public string DepartureAirport {  get; set; }
+        public string ArrivalAirport { get; set; }
         public DateOnly DateOfFlight;
-        public string Destination;
         public decimal BusinessPrice;
         public decimal EconomyPrice;
         public List<Seat> Seating { get; }
-        public bool currentStatus { get; }
+        public bool CurrentStatus { get; }
 
-        // source airport
-        // destination airport
+        //public string Origin { get; set; }
+        //public string Destination {  get; set; }
 
-        public Flight()
+        public Flight(int id, Airplane plane, string departure, string arrival)
         {
-            FlightID = 0;
+            ID = id;
+            Plane = plane;
+            DepartureAirport = departure;
+            ArrivalAirport = arrival;
 
+            DateOfFlight = new DateOnly();
+            Seating = new List<Seat>();
+            //CurrentStatus = GetStatus(id);
+
+            //Origin = origin;
+            //Destination = destination;
         }
 
+
+
+        // TODO: Methoden
         public decimal GetPrice(int seatNumber)
         {
             decimal price = 0;

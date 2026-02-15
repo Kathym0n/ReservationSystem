@@ -5,17 +5,25 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Willkommen beim Reservierungssystem für Ihren Flug!");
-            Seat testSeating = new Seat(1, 'F');
-
-            foreach (var item in testSeating.GetSeats(30, 'F'))
-            {
-                Console.WriteLine($"{item}");
-            }
+            
             BookingSystem TestSystem = new BookingSystem();
             Airplane Test = TestSystem.CreateAirplane("Kathys Jet");
             Airplane Test2 = TestSystem.CreateAirplane("Felix' Jet");
             Console.WriteLine(Test);
             Console.WriteLine(Test2);
+            List<int> testRows = new List<int>
+            {
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            };
+            List<char> testColumns = new List<char>
+            {
+                'A', 'B', 'C'
+            };
+            Test.CreateSeats(testRows, testColumns, SeatClass.Economy);
+            foreach (var seat in Test.Seats)
+            {
+                Console.WriteLine(seat);
+            }
 
             //Console.WriteLine("Geben Sie die FlugID an: ");
             //string FlugID = Console.ReadLine();

@@ -10,6 +10,8 @@ namespace AirlineReservationSystem
     {
         public int ID { get; set; }
         public List<Seat> Seats;
+        public BusinessClass BusinessClass { get; set; }
+        public EconomyClass EconomyClass { get; set; }
         public string Name;
 
         public Airplane(int planeID, string name) 
@@ -25,8 +27,18 @@ namespace AirlineReservationSystem
             ;
         }
 
-        public List<Seat> GetSeats()
+        public List<Seat> CreateSeats(List<int> rows, List<char> columns, SeatClass seatClass)
         {
+            List<Seat> newSeats = new List<Seat>();
+            foreach (int row in rows)
+            {
+                foreach (char column in columns)
+                {
+                    Seat newSeat = new Seat(row, column, seatClass);
+                    newSeats.Add(newSeat);
+                }
+            }
+            Seats.AddRange(newSeats); // Validierung optional hinzufügen
             return Seats;
         }
     }

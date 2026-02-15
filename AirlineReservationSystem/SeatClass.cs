@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace AirlineReservationSystem
 {
-    public class SeatClass
+
+    public enum SeatClass
     {
-        public enum Type 
-        { 
-            Business, 
-            Economy
-        }
+        Business,
+        Economy
     }
 }

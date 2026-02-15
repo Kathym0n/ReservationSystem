@@ -13,7 +13,7 @@ namespace AirlineReservationSystem
             1, 2, 3, 4, 5, 6
         };
 
-        List<char> letter = new List<char>
+        List<char> column = new List<char>
         {
             'A', 'B', 'C', 'D', 'E', 'F'
         };
