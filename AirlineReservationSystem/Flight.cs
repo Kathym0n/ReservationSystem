@@ -11,26 +11,24 @@ namespace AirlineReservationSystem
     {
         public int ID { get; set; }
         public Airplane Plane { get; set; }
-        public string DepartureAirport {  get; set; }
-        public string ArrivalAirport { get; set; }
+        public Airports DepartureAirport {  get; set; }
+        public Airports ArrivalAirport { get; set; }
         public DateOnly DateOfFlight;
         public decimal BusinessPrice;
         public decimal EconomyPrice;
-        public List<Seat> Seating { get; }
+        public List<Seat> Seats { get; }
         public bool CurrentStatus { get; }
 
-        //public string Origin { get; set; }
-        //public string Destination {  get; set; }
 
-        public Flight(int id, Airplane plane, string departure, string arrival)
+        public Flight(int id, Airplane plane, Airports departureCode, Airports arrivalCode)
         {
             ID = id;
             Plane = plane;
-            DepartureAirport = departure;
-            ArrivalAirport = arrival;
+            DepartureAirport = departureCode;
+            ArrivalAirport = arrivalCode;
+            Seats = plane.Seats;
 
             DateOfFlight = new DateOnly();
-            Seating = new List<Seat>();
             //CurrentStatus = GetStatus(id);
 
             //Origin = origin;

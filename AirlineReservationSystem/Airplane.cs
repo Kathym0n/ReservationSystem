@@ -39,6 +39,7 @@ namespace AirlineReservationSystem
                 }
             }
             Seats.AddRange(newSeats); // Validierung optional hinzufügen
+            Seats.Select(A => new Seat(A.Row, A.SeatColumn, seatClass));
             return Seats;
         }
     }

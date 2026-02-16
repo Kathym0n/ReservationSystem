@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,7 +29,7 @@ namespace AirlineReservationSystem
             Airplanes.Add(newAirplane);
             return newAirplane;
         }
-        public Flight CreateFlight(Airplane airplane, string departure, string arrival)
+        public Flight CreateFlight(Airplane airplane, Airports departure, Airports arrival)
         {
             int id = Utilities.CreateNewID(Flights);
             Flight newFlight = new Flight(id, airplane, departure, arrival);
@@ -50,7 +51,14 @@ namespace AirlineReservationSystem
             return newReservation;
         }
 
+
         // TODO: Methoden
+
+        //public List<Flight> GetFlights()
+        //{
+        //    List<Flight> flightsAll = new List<Flight>(); 
+        //    List<Flight> Flights;
+        //}
         public decimal GetPrice(SeatClass seatClass)
         {
             decimal price = 0;

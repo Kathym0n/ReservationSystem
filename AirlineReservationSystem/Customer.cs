@@ -34,7 +34,7 @@ namespace AirlineReservationSystem
         }
 
         // TODO: Methoden
-        public void ReserveSeating()
+        public void ReserveSeating(Flight flightID, Seat seatNumber)
         {
 
         }

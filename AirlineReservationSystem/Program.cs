@@ -24,6 +24,17 @@
             {
                 Console.WriteLine(seat);
             }
+            Flight testFlight = TestSystem.CreateFlight(Test, Airports.MUC, Airports.AMS);
+            Test.Seats[0].SeatClass = SeatClass.Business;
+            foreach (var seat in testFlight.Seats)
+            {
+                Console.WriteLine(seat);
+            }
+            foreach (var seat in Test.Seats)
+            {
+                Console.WriteLine(seat);
+            }
+
 
             //Console.WriteLine("Geben Sie die FlugID an: ");
             //string FlugID = Console.ReadLine();

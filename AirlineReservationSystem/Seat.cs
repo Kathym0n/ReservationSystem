@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AirlineReservationSystem
 {
-    public class Seat :IBookable
+    public class Seat :IBookable, ICloneable
     {
 
         public string SeatNumber; 
@@ -30,6 +30,11 @@ namespace AirlineReservationSystem
         public override string ToString()
         {
             return $"{Row}{SeatColumn} ({SeatClass})";
+        }
+
+        public Seat Clone()
+        {
+            return new Seat; // Seat Column char
         }
 
         // TODO: Methoden
