@@ -10,9 +10,9 @@ namespace AirlineReservationSystem
     {
         public int ID { get; set; }
         public List<Seat> Seats;
-        public BusinessClass BusinessClass { get; set; }
-        public EconomyClass EconomyClass { get; set; }
         public string Name;
+        //public BusinessClass BusinessClass { get; set; }
+        //public EconomyClass EconomyClass { get; set; }
 
         public Airplane(int planeID, string name) 
         {

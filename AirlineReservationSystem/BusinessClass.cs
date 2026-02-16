@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace AirlineReservationSystem
 {
     public class BusinessClass
+
+    // TODO: Methoden bzgl. Vergabe von Reihen und Spalten
+
     {
         List<int> row = new List<int>
         {

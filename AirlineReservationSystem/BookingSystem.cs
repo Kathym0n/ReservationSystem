@@ -42,7 +42,7 @@ namespace AirlineReservationSystem
             Customers.Add(newCustomer);
             return newCustomer;
         }
-        public  Reservation CreateReservation(Customer customer, Flight flight, List<Seat> seats)
+        public Reservation CreateReservation(Customer customer, Flight flight, List<Seat> seats)
         {
             int id = Utilities.CreateNewID(Reservations);
             Reservation newReservation = new Reservation(id, customer, flight, seats);

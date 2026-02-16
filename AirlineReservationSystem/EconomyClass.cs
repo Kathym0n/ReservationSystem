@@ -8,6 +8,8 @@ namespace AirlineReservationSystem
 {
     public class EconomyClass
     {
+        // TODO: Methoden bzgl. Vergabe von Reihen und Spalten
+
         public EconomyClass() 
         {
             
