@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AirlineReservationSystem.Data.Migrations
+namespace AirlineReservationSystem.Migrations
 {
     [DbContext(typeof(AirplaneReservationSystemContext))]
     partial class AirplaneReservationSystemContextModelSnapshot : ModelSnapshot
@@ -64,18 +64,23 @@ namespace AirlineReservationSystem.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("AirplaneID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("AirplaneID1")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("ArrivalAirport")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("DepartureAirport")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("PlaneID")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("ID");
 
-                    b.HasIndex("PlaneID");
+                    b.HasIndex("AirplaneID");
+
+                    b.HasIndex("AirplaneID1");
 
                     b.ToTable("Flights");
                 });
@@ -89,19 +94,19 @@ namespace AirlineReservationSystem.Data.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CustomerID1")
+                    b.Property<int>("FlightID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("FlightID")
+                    b.Property<int?>("FlightID1")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
                     b.HasIndex("CustomerID");
 
-                    b.HasIndex("CustomerID1");
-
                     b.HasIndex("FlightID");
+
+                    b.HasIndex("FlightID1");
 
                     b.ToTable("Reservations");
                 });
@@ -118,7 +123,7 @@ namespace AirlineReservationSystem.Data.Migrations
                     b.Property<int?>("FlightID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ReservationID")
+                    b.Property<int>("ReservationID")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("SeatClass")
@@ -151,32 +156,36 @@ namespace AirlineReservationSystem.Data.Migrations
 
             modelBuilder.Entity("AirlineReservationSystem.Models.Flight", b =>
                 {
-                    b.HasOne("AirlineReservationSystem.Models.Airplane", "Plane")
+                    b.HasOne("AirlineReservationSystem.Models.Airplane", "Airplane")
                         .WithMany()
-                        .HasForeignKey("PlaneID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("AirplaneID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Plane");
+                    b.HasOne("AirlineReservationSystem.Models.Airplane", null)
+                        .WithMany("Flights")
+                        .HasForeignKey("AirplaneID1");
+
+                    b.Navigation("Airplane");
                 });
 
             modelBuilder.Entity("AirlineReservationSystem.Models.Reservation", b =>
                 {
                     b.HasOne("AirlineReservationSystem.Models.Customer", "Customer")
-                        .WithMany()
+                        .WithMany("Reservations")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("AirlineReservationSystem.Models.Customer", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("CustomerID1");
 
                     b.HasOne("AirlineReservationSystem.Models.Flight", "Flight")
                         .WithMany()
                         .HasForeignKey("FlightID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("AirlineReservationSystem.Models.Flight", null)
+                        .WithMany("Reservations")
+                        .HasForeignKey("FlightID1");
 
                     b.Navigation("Customer");
 
@@ -193,14 +202,20 @@ namespace AirlineReservationSystem.Data.Migrations
                         .WithMany("FlightSeats")
                         .HasForeignKey("FlightID");
 
-                    b.HasOne("AirlineReservationSystem.Models.Reservation", null)
+                    b.HasOne("AirlineReservationSystem.Models.Reservation", "Reservation")
                         .WithMany("Seats")
-                        .HasForeignKey("ReservationID");
+                        .HasForeignKey("ReservationID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("AirlineReservationSystem.Models.Airplane", b =>
                 {
                     b.Navigation("AirplaneSeats");
+
+                    b.Navigation("Flights");
                 });
 
             modelBuilder.Entity("AirlineReservationSystem.Models.Customer", b =>
@@ -211,6 +226,8 @@ namespace AirlineReservationSystem.Data.Migrations
             modelBuilder.Entity("AirlineReservationSystem.Models.Flight", b =>
                 {
                     b.Navigation("FlightSeats");
+
+                    b.Navigation("Reservations");
                 });
 
             modelBuilder.Entity("AirlineReservationSystem.Models.Reservation", b =>
