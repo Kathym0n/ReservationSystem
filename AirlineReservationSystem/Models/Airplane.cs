@@ -12,14 +12,13 @@ namespace AirlineReservationSystem.Models
         public int ID { get; set; }
 
         // Navigation Properties mit Foreign Keys
-        public int FlightID { get; set; }
-        public Flight Flight { get; set; } = null!;
+        public List<Seat> AirplaneSeats { get; set; } = new List<Seat>();
+        public List<Flight> Flights { get; set; } = new List<Flight>();
 
         
         // TODO: Attribute überarbeiten
 
         public string Name { get; set; } = string.Empty;
-        public List<Seat> AirplaneSeats { get; set; } = null!;
         //public BusinessClass BusinessClass { get; set; }
         //public EconomyClass EconomyClass { get; set; }
 
@@ -54,6 +53,6 @@ namespace AirlineReservationSystem.Models
             return AirplaneSeats;
         }
         
-        // bool überschreiben? business / economy
+        // TODO: bei Anpassung der Sitze: bool SeatClass überschreiben? business / economy
     }
 }

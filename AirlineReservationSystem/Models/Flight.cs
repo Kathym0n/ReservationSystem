@@ -15,8 +15,8 @@ namespace AirlineReservationSystem.Models
         // Navigation Properties mit Foreign Keys
         public int AirplaneID { get; set; }
         public Airplane Airplane { get; set; } = null!;
-        public int CustomerID { get; set; }
-        public Customer Customer { get; set; } = null!;
+        public List<Seat> FlightSeats { get; set; } = new List<Seat>();
+        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
 
 
         // TODO: Attribute überarbeiten
@@ -26,7 +26,6 @@ namespace AirlineReservationSystem.Models
         public DateOnly DateOfFlight;
         public decimal BusinessPrice;
         public decimal EconomyPrice;
-        public List<Seat> FlightSeats { get; set; } = new List<Seat>();
         public bool CurrentStatus { get; }
 
         public Flight() { }
@@ -42,8 +41,10 @@ namespace AirlineReservationSystem.Models
             DateOfFlight = new DateOnly();
             //CurrentStatus = GetStatus(id);
 
-            //Origin = origin;
-            //Destination = destination;
+
+            // TODO: neue Tabelle: Airports - Ortsname ?
+            // Origin
+            // Destination
         }
 
 

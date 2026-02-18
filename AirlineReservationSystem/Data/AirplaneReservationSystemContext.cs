@@ -46,22 +46,20 @@ namespace AirlineReservationSystem.Data
             modelBuilder.Entity<Flight>()
                         .HasOne(f => f.Airplane)
                         .WithMany()
-                        //.HasForeignKey(f => f.a)
+                        .HasForeignKey(f => f.AirplaneID)
                         .OnDelete(DeleteBehavior.Restrict);
 
 
             // TODO: Verbindungen ergänzen?
 
-            // Seats => Airplane?
-            //// Seats -> Reservation (n:1)
-            //modelBuilder.Entity<Seat>()
-            //            .HasOne(s => s.Reservation)
-            //            .WithMany()
-            //            .OnDelete(DeleteBehavior.Restrict);
+            // Customer 1───n Reservation n───1 Flight
+            //1───n Reservation n───n Seat
+            //Flight   1───n Seat
+            //Airplane 1───n Seat
+            //Airplane 1───n Flight
 
-            // Customer -> Flight (n:m)
-            // 
-         
+
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -12,10 +12,8 @@ namespace AirlineReservationSystem.Models
         public int ID { get; set; }
 
         // Navigation Properties mit Foreign Keys
-        public int FlightID { get; set; }
-        public Flight Flight { get; set; } = null!;
-        public int ReservationID { get; set; }
-        public Reservation Reservation { get; set; } = null!;
+        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
+
 
         
         // TODO: Attribute überarbeiten
@@ -25,7 +23,6 @@ namespace AirlineReservationSystem.Models
         //public string Password;
         public string PhoneNumber { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
-        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
 
 
         public Customer() { }
