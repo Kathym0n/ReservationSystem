@@ -38,9 +38,10 @@ namespace AirlineReservationSystem
                     newSeats.Add(newSeat);
                 }
             }
-            Seats.AddRange(newSeats); // Validierung optional hinzufügen
-            Seats.Select(A => new Seat(A.Row, A.SeatColumn, seatClass));
+            //Seats.AddRange(newSeats); // Validierung optional hinzufügen
+            //Seats.Select(A => new Seat(A.Row, A.SeatColumn, seatClass));
             return Seats;
         }
+        // bool überschreiben? business / economy
     }
 }
