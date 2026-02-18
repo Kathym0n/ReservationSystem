@@ -1,4 +1,5 @@
-﻿using AirlineReservationSystem.Models;
+﻿using AirlineReservationSystem.Enums;
+using AirlineReservationSystem.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -27,21 +28,40 @@ namespace AirlineReservationSystem.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Explizite Konfiguration der Relationships
-            modelBuilder.Entity<Reservation>(entity =>
-            {
-                entity.HasKey(e => e.ID);
+            // Customer -> Reservations (1:n)
+            modelBuilder.Entity<Customer>()
+                        .HasMany(c => c.Reservations)
+                        .WithOne(r => r.Customer)
+                        .HasForeignKey(r => r.CustomerID)
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(r => r.Customer)
-                      .WithMany()
-                      .HasForeignKey(r => r.CustomerID)
-                      .OnDelete(DeleteBehavior.Restrict);
+            // Reservations -> Flight (n:1)
+            modelBuilder.Entity<Reservation>()
+                        .HasOne(r => r.Flight)
+                        .WithMany()
+                        .HasForeignKey(r => r.FlightID)
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(r => r.Flight)
-                      .WithMany()
-                      .HasForeignKey(r => r.FlightID)
-                      .OnDelete(DeleteBehavior.Restrict);
-            });
+            // Flight -> Airplane (n:1)
+            modelBuilder.Entity<Flight>()
+                        .HasOne(f => f.Airplane)
+                        .WithMany()
+                        //.HasForeignKey(f => f.a)
+                        .OnDelete(DeleteBehavior.Restrict);
 
+
+            // TODO: Verbindungen ergänzen?
+
+            // Seats => Airplane?
+            //// Seats -> Reservation (n:1)
+            //modelBuilder.Entity<Seat>()
+            //            .HasOne(s => s.Reservation)
+            //            .WithMany()
+            //            .OnDelete(DeleteBehavior.Restrict);
+
+            // Customer -> Flight (n:m)
+            // 
+         
             base.OnModelCreating(modelBuilder);
         }
     }

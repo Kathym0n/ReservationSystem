@@ -41,7 +41,7 @@ namespace AirlineReservationSystem
         public Customer CreateCustomer(string name)
         {
             int id = Utilities.CreateNewID(Customers);
-            Customer newCustomer = new Customer(id, name);
+            Customer newCustomer = new Customer(name);
             Customers.Add(newCustomer);
             return newCustomer;
         }

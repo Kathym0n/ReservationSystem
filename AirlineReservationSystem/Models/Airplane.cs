@@ -10,6 +10,14 @@ namespace AirlineReservationSystem.Models
     public class Airplane : IHasID
     {
         public int ID { get; set; }
+
+        // Navigation Properties mit Foreign Keys
+        public int FlightID { get; set; }
+        public Flight Flight { get; set; } = null!;
+
+        
+        // TODO: Attribute überarbeiten
+
         public string Name { get; set; } = string.Empty;
         public List<Seat> AirplaneSeats { get; set; } = null!;
         //public BusinessClass BusinessClass { get; set; }
@@ -17,9 +25,9 @@ namespace AirlineReservationSystem.Models
 
         public Airplane() { }
 
-        public Airplane(int planeID, string name) 
+        public Airplane(int airplaneID, string name) 
         {
-            ID = planeID;
+            ID = airplaneID;
             AirplaneSeats = new List<Seat>();
             Name = name;
         }

@@ -11,7 +11,16 @@ namespace AirlineReservationSystem.Models
     public class Flight : IHasID
     {
         public int ID { get; set; }
-        public Airplane Plane { get; set; } = null!;
+
+        // Navigation Properties mit Foreign Keys
+        public int AirplaneID { get; set; }
+        public Airplane Airplane { get; set; } = null!;
+        public int CustomerID { get; set; }
+        public Customer Customer { get; set; } = null!;
+
+
+        // TODO: Attribute überarbeiten
+
         public Airports DepartureAirport {  get; set; }
         public Airports ArrivalAirport { get; set; }
         public DateOnly DateOfFlight;
@@ -22,13 +31,13 @@ namespace AirlineReservationSystem.Models
 
         public Flight() { }
 
-        public Flight(int id, Airplane plane, Airports departureCode, Airports arrivalCode)
+        public Flight(int id, Airplane airplane, Airports departureCode, Airports arrivalCode)
         {
             ID = id;
-            Plane = plane;
+            Airplane = airplane;
             DepartureAirport = departureCode;
             ArrivalAirport = arrivalCode;
-            FlightSeats = plane.AirplaneSeats;
+            FlightSeats = airplane.AirplaneSeats;
 
             DateOfFlight = new DateOnly();
             //CurrentStatus = GetStatus(id);

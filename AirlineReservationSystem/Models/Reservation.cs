@@ -16,7 +16,9 @@ namespace AirlineReservationSystem.Models
         public int FlightID { get; set; }
         public Flight Flight { get; set; } = null!;
         public List<Seat> Seats { get; set; } = new List<Seat>();
-        
+
+        // TODO: Attribute überarbeiten?
+
 
         public Reservation() { }
 

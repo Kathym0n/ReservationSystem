@@ -16,6 +16,6 @@ namespace AirlineReservationSystem
         
         bool IsBooked();    // Sitz aud Buchung prüfen
 
-        // Status-Management: frei/reserviert/gebucht
+        // TODO: Status-Management: frei/reserviert/gebucht
     }
 }

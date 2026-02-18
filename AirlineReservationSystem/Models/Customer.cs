@@ -10,19 +10,28 @@ namespace AirlineReservationSystem.Models
     {
 
         public int ID { get; set; }
+
+        // Navigation Properties mit Foreign Keys
+        public int FlightID { get; set; }
+        public Flight Flight { get; set; } = null!;
+        public int ReservationID { get; set; }
+        public Reservation Reservation { get; set; } = null!;
+
+        
+        // TODO: Attribute überarbeiten
+
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         //public string Password;
         public string PhoneNumber { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
-        public List<Reservation> Reservations { get; set; }
+        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
 
 
         public Customer() { }
 
-        public Customer(int customerID, string name)
+        public Customer(string name)
         {
-            ID = customerID;
             Name = name;
             Email = string.Empty;
             PhoneNumber = string.Empty; 

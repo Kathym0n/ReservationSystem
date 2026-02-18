@@ -1,4 +1,5 @@
 ﻿using AirlineReservationSystem.Enums;
+using AirlineReservationSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,14 @@ namespace AirlineReservationSystem
     public class Seat :IBookable  //, ICloneable
     {
         public int ID { get; set; }
+
+        // Navigation Properties mit Foreign Keys
+        public int ReservationID { get; set; }
+        public Reservation Reservation { get; set; } = null!;
+
+
+        // TODO: Attribute überarbeiten
+
         public string SeatNumber { get; set; } = string.Empty; 
         public int SeatRow { get; set; }
         public string SeatColumn { get; set; } = string.Empty;
