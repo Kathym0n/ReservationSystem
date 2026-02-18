@@ -4,15 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirlineReservationSystem
+namespace AirlineReservationSystem.Models
 {
     public class Reservation : IHasID
     {
         public int ID { get; set; }
-        public Customer Customer;
-        public Flight Flight;
-        public List<Seat> Seats;
+
+        // Navigation Properties mit Foreign Keys
+        public int CustomerID { get; set; }
+        public Customer Customer { get; set; } = null!;
+        public int FlightID { get; set; }
+        public Flight Flight { get; set; } = null!;
+        public List<Seat> Seats { get; set; } = new List<Seat>();
         
+
+        public Reservation() { }
 
         public Reservation(int reservationID, Customer customer, Flight flight, List<Seat> seats) 
         {

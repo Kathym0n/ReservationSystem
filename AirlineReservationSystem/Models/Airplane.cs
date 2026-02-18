@@ -1,18 +1,21 @@
-﻿using System;
+﻿using AirlineReservationSystem.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirlineReservationSystem
+namespace AirlineReservationSystem.Models
 {
     public class Airplane : IHasID
     {
         public int ID { get; set; }
         public List<Seat> Seats;
-        public string Name;
+        public string Name { get; set; }
         //public BusinessClass BusinessClass { get; set; }
         //public EconomyClass EconomyClass { get; set; }
+
+        public Airplane() { }
 
         public Airplane(int planeID, string name) 
         {
@@ -42,6 +45,7 @@ namespace AirlineReservationSystem
             //Seats.Select(A => new Seat(A.Row, A.SeatColumn, seatClass));
             return Seats;
         }
+        
         // bool überschreiben? business / economy
     }
 }

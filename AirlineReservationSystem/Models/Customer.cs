@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirlineReservationSystem
+namespace AirlineReservationSystem.Models
 {
     public class Customer : IHasID
     {
@@ -17,6 +17,8 @@ namespace AirlineReservationSystem
         public string Address { get; set; }
         public List<Reservation> Reservations { get; set; }
 
+
+        public Customer() { }
 
         public Customer(int customerID, string name)
         {

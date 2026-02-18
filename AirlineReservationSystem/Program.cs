@@ -1,4 +1,7 @@
-﻿namespace AirlineReservationSystem
+﻿using AirlineReservationSystem.Enums;
+using AirlineReservationSystem.Models;
+
+namespace AirlineReservationSystem
 {
     public class Program
     {

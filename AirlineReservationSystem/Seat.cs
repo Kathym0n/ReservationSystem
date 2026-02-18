@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AirlineReservationSystem.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -10,16 +11,18 @@ namespace AirlineReservationSystem
 {
     public class Seat :IBookable  //, ICloneable
     {
-
+        public int ID { get; set; }
         public string SeatNumber; 
-        public int Row;
+        public int SeatRow;
         public string SeatColumn;
         public SeatStatus Status;
         public SeatClass SeatClass { get; set; }
 
+        public Seat() { }
+
         public Seat(int row, char seatColumn, SeatClass seatClass)
         {
-            Row = row;
+            SeatRow = row;
             SeatColumn = $"{seatColumn}";
             string seatNumber = $"{row}{seatColumn}";
             SeatNumber = seatNumber;
@@ -29,7 +32,7 @@ namespace AirlineReservationSystem
 
         public override string ToString()
         {
-            return $"{Row}{SeatColumn} ({SeatClass})";
+            return $"{SeatRow}{SeatColumn} ({SeatClass})";
         }
 
         //public Seat Clone()

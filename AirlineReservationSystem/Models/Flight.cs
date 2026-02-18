@@ -1,11 +1,12 @@
-﻿using System;
+﻿using AirlineReservationSystem.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirlineReservationSystem
+namespace AirlineReservationSystem.Models
 {
     public class Flight : IHasID
     {
@@ -19,6 +20,7 @@ namespace AirlineReservationSystem
         public List<Seat> Seats { get; }
         public bool CurrentStatus { get; }
 
+        public Flight() { }
 
         public Flight(int id, Airplane plane, Airports departureCode, Airports arrivalCode)
         {
