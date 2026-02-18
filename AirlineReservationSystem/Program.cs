@@ -10,9 +10,9 @@ namespace AirlineReservationSystem
             Console.WriteLine("Willkommen beim Reservierungssystem für Ihren Flug!");
             
             BookingSystem TestSystem = new BookingSystem();
-            Airplane Test = TestSystem.CreateAirplane("Kathys Jet");
+            Airplane TestAirplane = TestSystem.CreateAirplane("Kathys Jet");
             Airplane Test2 = TestSystem.CreateAirplane("Felix' Jet");
-            Console.WriteLine(Test);
+            Console.WriteLine(TestAirplane);
             Console.WriteLine(Test2);
             List<int> testRows = new List<int>
             {
@@ -22,18 +22,18 @@ namespace AirlineReservationSystem
             {
                 'A', 'B', 'C'
             };
-            Test.CreateSeats(testRows, testColumns, SeatClass.Economy);
-            foreach (var seat in Test.Seats)
+            TestAirplane.CreateSeats(testRows, testColumns, SeatClass.Economy);
+            foreach (var seat in TestAirplane.AirplaneSeats)
             {
                 Console.WriteLine(seat);
             }
-            Flight testFlight = TestSystem.CreateFlight(Test, Airports.MUC, Airports.AMS);
-            Test.Seats[0].SeatClass = SeatClass.Business;
-            foreach (var seat in testFlight.Seats)
+            Flight testFlight = TestSystem.CreateFlight(TestAirplane, Airports.MUC, Airports.AMS);
+            TestAirplane.AirplaneSeats[0].SeatClass = SeatClass.Business;
+            foreach (var seat in testFlight.FlightSeats)
             {
                 Console.WriteLine(seat);
             }
-            foreach (var seat in Test.Seats)
+            foreach (var seat in TestAirplane.AirplaneSeats)
             {
                 Console.WriteLine(seat);
             }

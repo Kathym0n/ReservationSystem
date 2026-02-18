@@ -12,10 +12,10 @@ namespace AirlineReservationSystem
     public class Seat :IBookable  //, ICloneable
     {
         public int ID { get; set; }
-        public string SeatNumber; 
-        public int SeatRow;
-        public string SeatColumn;
-        public SeatStatus Status;
+        public string SeatNumber { get; set; } = string.Empty; 
+        public int SeatRow { get; set; }
+        public string SeatColumn { get; set; } = string.Empty;
+        public SeatStatus Status { get; set; }
         public SeatClass SeatClass { get; set; }
 
         public Seat() { }

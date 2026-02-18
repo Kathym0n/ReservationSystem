@@ -11,13 +11,13 @@ namespace AirlineReservationSystem.Models
     public class Flight : IHasID
     {
         public int ID { get; set; }
-        public Airplane Plane { get; set; }
+        public Airplane Plane { get; set; } = null!;
         public Airports DepartureAirport {  get; set; }
         public Airports ArrivalAirport { get; set; }
         public DateOnly DateOfFlight;
         public decimal BusinessPrice;
         public decimal EconomyPrice;
-        public List<Seat> Seats { get; }
+        public List<Seat> FlightSeats { get; set; } = new List<Seat>();
         public bool CurrentStatus { get; }
 
         public Flight() { }
@@ -28,7 +28,7 @@ namespace AirlineReservationSystem.Models
             Plane = plane;
             DepartureAirport = departureCode;
             ArrivalAirport = arrivalCode;
-            Seats = plane.Seats;
+            FlightSeats = plane.AirplaneSeats;
 
             DateOfFlight = new DateOnly();
             //CurrentStatus = GetStatus(id);

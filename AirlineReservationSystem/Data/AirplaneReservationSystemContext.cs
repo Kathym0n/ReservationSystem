@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace AirlineReservationSystem.Data
 {
@@ -17,11 +18,31 @@ namespace AirlineReservationSystem.Data
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-            DbPath = Path.Join($"Data Source={DbPath}");
+            DbPath = Path.Join(path, "AirlineReservation.db");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite($"Data Source={DbPath}");
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Explizite Konfiguration der Relationships
+            modelBuilder.Entity<Reservation>(entity =>
+            {
+                entity.HasKey(e => e.ID);
+
+                entity.HasOne(r => r.Customer)
+                      .WithMany()
+                      .HasForeignKey(r => r.CustomerID)
+                      .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(r => r.Flight)
+                      .WithMany()
+                      .HasForeignKey(r => r.FlightID)
+                      .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

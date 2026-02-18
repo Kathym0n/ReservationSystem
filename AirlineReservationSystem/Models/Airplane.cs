@@ -10,8 +10,8 @@ namespace AirlineReservationSystem.Models
     public class Airplane : IHasID
     {
         public int ID { get; set; }
-        public List<Seat> Seats;
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public List<Seat> AirplaneSeats { get; set; } = null!;
         //public BusinessClass BusinessClass { get; set; }
         //public EconomyClass EconomyClass { get; set; }
 
@@ -20,7 +20,7 @@ namespace AirlineReservationSystem.Models
         public Airplane(int planeID, string name) 
         {
             ID = planeID;
-            Seats = new List<Seat>();
+            AirplaneSeats = new List<Seat>();
             Name = name;
         }
 
@@ -43,7 +43,7 @@ namespace AirlineReservationSystem.Models
             }
             //Seats.AddRange(newSeats); // Validierung optional hinzufügen
             //Seats.Select(A => new Seat(A.Row, A.SeatColumn, seatClass));
-            return Seats;
+            return AirplaneSeats;
         }
         
         // bool überschreiben? business / economy
