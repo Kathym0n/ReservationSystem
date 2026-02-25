@@ -1,9 +1,8 @@
-﻿using AirlineReservationSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AirlineReservationSystem
+namespace AirlineReservationSystem.Models
 {
     public class ReservationSeat : IHasID
     {
