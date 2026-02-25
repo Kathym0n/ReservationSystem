@@ -23,17 +23,17 @@ namespace AirlineReservationSystem
                 'A', 'B', 'C'
             };
             TestAirplane.CreateSeats(testRows, testColumns, SeatClass.Economy);
-            foreach (var seat in TestAirplane.AirplaneSeats)
+            foreach (var seat in TestAirplane.Seats)
             {
                 Console.WriteLine(seat);
             }
             Flight testFlight = TestSystem.CreateFlight(TestAirplane, Airports.MUC, Airports.AMS);
-            TestAirplane.AirplaneSeats[0].SeatClass = SeatClass.Business;
+            TestAirplane.Seats[0].SeatClass = SeatClass.Business;
             foreach (var seat in testFlight.FlightSeats)
             {
                 Console.WriteLine(seat);
             }
-            foreach (var seat in TestAirplane.AirplaneSeats)
+            foreach (var seat in TestAirplane.Seats)
             {
                 Console.WriteLine(seat);
             }

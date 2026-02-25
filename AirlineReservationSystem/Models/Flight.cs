@@ -12,41 +12,30 @@ namespace AirlineReservationSystem.Models
     {
         public int ID { get; set; }
 
-        // Navigation Properties mit Foreign Keys
+        // Foreign Key: which airplane?
         public int AirplaneID { get; set; }
         public Airplane Airplane { get; set; } = null!;
-        public List<Seat> FlightSeats { get; set; } = new List<Seat>();
-        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
-
-
-        // TODO: Attribute überarbeiten
 
         public Airports DepartureAirport {  get; set; }
         public Airports ArrivalAirport { get; set; }
-        public DateOnly DateOfFlight;
-        public decimal BusinessPrice;
-        public decimal EconomyPrice;
-        public bool CurrentStatus { get; }
-
+        public DateOnly DateOfFlight { get; set; }
+        public decimal BusinessPrice { get; set; }
+        public decimal EconomyPrice { get; set; }
+        public bool CurrentStatus { get; set; }
+        
+        // Navigation
+        public List<FlightSeat> FlightSeats { get; set; } = new List<FlightSeat>();
+        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
+        
         public Flight() { }
 
-        public Flight(int id, Airplane airplane, Airports departureCode, Airports arrivalCode)
+        public Flight(Airplane airplane, Airports departureCode, Airports arrivalCode)
         {
-            ID = id;
             Airplane = airplane;
             DepartureAirport = departureCode;
             ArrivalAirport = arrivalCode;
-            FlightSeats = airplane.AirplaneSeats;
-
-            DateOfFlight = new DateOnly();
-            //CurrentStatus = GetStatus(id);
-
-
-            // TODO: neue Tabelle: Airports - Ortsname ?
-            // Origin
-            // Destination
+            DateOfFlight = DateOnly.FromDateTime(DateTime.Now);
         }
-
 
 
         // TODO: Methoden
@@ -54,13 +43,6 @@ namespace AirlineReservationSystem.Models
         {
             decimal price = 0;
             return price;
-
-        }
-
-        public List<Flight> HasAvailableSeats(int flightID)
-        {
-            List<Flight> flights = new List<Flight>();
-            return flights;
 
         }
     }

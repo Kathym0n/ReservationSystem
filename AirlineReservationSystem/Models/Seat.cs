@@ -9,25 +9,28 @@ using System.Threading.Tasks;
 
 namespace AirlineReservationSystem.Models
 {
-    public class Seat :IBookable  //, ICloneable
+    /// <summary>
+    /// only physical seat definition
+    /// </summary>
+    public class Seat : IHasID
     {
         public int ID { get; set; }
 
-        // Navigation Properties mit Foreign Keys
-        public int ReservationID { get; set; }
-        public Reservation Reservations { get; set; } = null!;
+        /// <summary>
+        /// Foreign Key: only Airplane
+        /// </summary>
         public int AirplaneID { get; set; }
         public Airplane Airplane { get; set; } = null!;
 
-
-
-        // TODO: Attribute überarbeiten
-
+        /// <summary>
+        /// Attributes
+        /// </summary>
         public string SeatNumber { get; set; } = string.Empty; 
         public int SeatRow { get; set; }
         public string SeatColumn { get; set; } = string.Empty;
-        public SeatStatus Status { get; set; }
         public SeatClass SeatClass { get; set; }
+
+        public List<FlightSeat> FlightSeats { get; set; } = new List<FlightSeat>();
 
         public Seat() { }
 
@@ -35,9 +38,7 @@ namespace AirlineReservationSystem.Models
         {
             SeatRow = row;
             SeatColumn = $"{seatColumn}";
-            string seatNumber = $"{row}{seatColumn}";
-            SeatNumber = seatNumber;
-            Status = SeatStatus.Free;
+            SeatNumber = $"{row}{seatColumn}";
             SeatClass = seatClass;
         }
 

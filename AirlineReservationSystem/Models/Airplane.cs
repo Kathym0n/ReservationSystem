@@ -10,30 +10,17 @@ namespace AirlineReservationSystem.Models
     public class Airplane : IHasID
     {
         public int ID { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        // Navigation Properties mit Foreign Keys
+        // Navigation
         public List<Seat> Seats { get; set; } = new List<Seat>();
-        public List<int> FlightID { get; set; } = new List<int>();
         public List<Flight> Flights { get; set; } = new List<Flight>();
 
-        
-        // TODO: Attribute überarbeiten
 
-        public string Name { get; set; } = string.Empty;
-        //public BusinessClass BusinessClass { get; set; }
-        //public EconomyClass EconomyClass { get; set; }
+        public Airplane() { }
 
-        public Airplane() 
+        public Airplane(string name) 
         {
-            Flights = new List<Flight>();
-            Seats = new List<Seat>();
-            Name = string.Empty;
-        }
-
-        public Airplane(int airplaneID, string name) 
-        {
-            ID = airplaneID;
-            Seats = new List<Seat>();
             Name = name;
         }
 
@@ -45,18 +32,15 @@ namespace AirlineReservationSystem.Models
 
         public List<Seat> CreateSeats(List<int> rows, List<char> columns, SeatClass seatClass)
         {
-            List<Seat> newSeats = new List<Seat>();
             foreach (int row in rows)
             {
                 foreach (char column in columns)
                 {
                     Seat newSeat = new Seat(row, column, seatClass);
-                    newSeats.Add(newSeat);
+                    Seats.Add(newSeat);
                 }
             }
-            //Seats.AddRange(newSeats); // Validierung optional hinzufügen
-            //Seats.Select(A => new Seat(A.Row, A.SeatColumn, seatClass));
-            return AirplaneSeats;
+            return Seats;
         }
         
         // TODO: bei Anpassung der Sitze: bool SeatClass überschreiben? business / economy

@@ -19,4 +19,7 @@ namespace AirlineReservationSystem.Enums
         MUC,
         FRA
     }
+
+    // TODO: neue Klasse ausarbeiten? Airports -> Ortsname ?
+
 }

@@ -10,30 +10,17 @@ namespace AirlineReservationSystem.Models
     {
         public int ID { get; set; }
 
-        // Navigation Properties mit Foreign Keys
+        // Foreign Key: which customer?
         public int CustomerID { get; set; }
         public Customer Customer { get; set; } = null!;
+
+        // Foreign Key: which flight?
         public int FlightID { get; set; }
         public Flight Flight { get; set; } = null!;
-        public List<string> SeatID { get; set; } = new List<string>();
-        public List<Seat> Seats { get; set; } = new List<Seat>();
 
-        // TODO: Attribute überarbeiten?
+        public List<ReservationSeat> ReservationSeats { get; set; } = new List<ReservationSeat>();
 
-
-        public Reservation() 
-        { 
-            Seats = new List<Seat>();
-        }
-
-        public Reservation(int reservationID, Customer customer, Flight flight, List<Seat> seats) 
-        {
-            ID = reservationID;
-            Customer = customer;
-            Flight = flight;
-            Seats = seats;
-            
-        }
+        public Reservation() { }
 
         // TODO: Methoden
         public void ConfirmReservation()

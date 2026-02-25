@@ -26,29 +26,27 @@ namespace AirlineReservationSystem
 
         public Airplane CreateAirplane(string name)
         {
-            int id = Utilities.CreateNewID(Airplanes);
-            Airplane newAirplane = new Airplane(id, name);
+            Airplane newAirplane = new Airplane(name);
             Airplanes.Add(newAirplane);
             return newAirplane;
         }
-        public Flight CreateFlight(Airplane airplane, Airports departure, Airports arrival)
+        public Flight CreateFlight(Airplane airplane, Airports departureCode, Airports arrivalCode)
         {
-            int id = Utilities.CreateNewID(Flights);
-            Flight newFlight = new Flight(id, airplane, departure, arrival);
+            Flight newFlight = new Flight(airplane, departureCode, arrivalCode);
             Flights.Add(newFlight);
             return newFlight;
         }
-        public Customer CreateCustomer(string name)
+        public Customer CreateCustomer(string firstName, string lastName)
         {
-            int id = Utilities.CreateNewID(Customers);
-            Customer newCustomer = new Customer(name);
+            Customer newCustomer = new Customer(firstName,lastName);
             Customers.Add(newCustomer);
             return newCustomer;
         }
-        public Reservation CreateReservation(Customer customer, Flight flight, List<Seat> seats)
+        public Reservation CreateReservation(Customer customer, Flight flight)
         {
-            int id = Utilities.CreateNewID(Reservations);
-            Reservation newReservation = new Reservation(id, customer, flight, seats);
+            Reservation newReservation = new Reservation();
+            newReservation.Customer = customer;
+            newReservation.Flight = flight;
             Reservations.Add(newReservation);
             return newReservation;
         }
@@ -56,11 +54,6 @@ namespace AirlineReservationSystem
 
         // TODO: Methoden
 
-        //public List<Flight> GetFlights()
-        //{
-        //    List<Flight> flightsAll = new List<Flight>(); 
-        //    List<Flight> Flights;
-        //}
         public decimal GetPrice(SeatClass seatClass)
         {
             decimal price = 0;
