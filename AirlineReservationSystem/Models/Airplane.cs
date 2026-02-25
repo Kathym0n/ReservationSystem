@@ -12,7 +12,8 @@ namespace AirlineReservationSystem.Models
         public int ID { get; set; }
 
         // Navigation Properties mit Foreign Keys
-        public List<Seat> AirplaneSeats { get; set; } = new List<Seat>();
+        public List<Seat> Seats { get; set; } = new List<Seat>();
+        public List<int> FlightID { get; set; } = new List<int>();
         public List<Flight> Flights { get; set; } = new List<Flight>();
 
         
@@ -22,12 +23,17 @@ namespace AirlineReservationSystem.Models
         //public BusinessClass BusinessClass { get; set; }
         //public EconomyClass EconomyClass { get; set; }
 
-        public Airplane() { }
+        public Airplane() 
+        {
+            Flights = new List<Flight>();
+            Seats = new List<Seat>();
+            Name = string.Empty;
+        }
 
         public Airplane(int airplaneID, string name) 
         {
             ID = airplaneID;
-            AirplaneSeats = new List<Seat>();
+            Seats = new List<Seat>();
             Name = name;
         }
 

@@ -1,5 +1,4 @@
 ﻿using AirlineReservationSystem.Enums;
-using AirlineReservationSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirlineReservationSystem
+namespace AirlineReservationSystem.Models
 {
     public class Seat :IBookable  //, ICloneable
     {
@@ -16,7 +15,10 @@ namespace AirlineReservationSystem
 
         // Navigation Properties mit Foreign Keys
         public int ReservationID { get; set; }
-        public Reservation Reservation { get; set; } = null!;
+        public Reservation Reservations { get; set; } = null!;
+        public int AirplaneID { get; set; }
+        public Airplane Airplane { get; set; } = null!;
+
 
 
         // TODO: Attribute überarbeiten

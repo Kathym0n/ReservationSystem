@@ -12,33 +12,40 @@ namespace AirlineReservationSystem.Models
         public int ID { get; set; }
 
         // Navigation Properties mit Foreign Keys
-        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
+        public List<int> ReservationID { get; set; } = new List<int>();
+        public List<Reservation> Reservations { get; set; }
 
 
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string EmailAdress { get; set; } = string.Empty;
+        public string PhoneNumber { get; set; } = string.Empty;
         
+
         // TODO: Attribute überarbeiten
 
-        public string Name { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
         //public string Password;
-        public string PhoneNumber { get; set; } = string.Empty;
-        public string Address { get; set; } = string.Empty;
+        //public string Address { get; set; } = string.Empty;
 
-
-        public Customer() { }
-
-        public Customer(string name)
-        {
-            Name = name;
-            Email = string.Empty;
-            PhoneNumber = string.Empty; 
-            Address = string.Empty;
+        public Customer() 
+        { 
             Reservations = new List<Reservation>();
+        }
+
+        public Customer(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            EmailAdress = string.Empty;
+            PhoneNumber = string.Empty; 
+            Reservations = new List<Reservation>();
+
+            //Address = string.Empty;
         }
 
         public override string ToString()
         {
-            return $"{ID}, {Name}";
+            return $"{ID}, {FirstName} {LastName}";
         }
 
         // TODO: Methoden

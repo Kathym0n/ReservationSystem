@@ -9,10 +9,12 @@ namespace AirlineReservationSystem.Data
 {
     public class AirplaneReservationSystemContext : DbContext
     {
+        //entities
         public DbSet<Airplane> Airplanes { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Seat> Seats { get; set; }
         public string DbPath { get; }
 
         public AirplaneReservationSystemContext()
@@ -38,11 +40,28 @@ namespace AirlineReservationSystem.Data
             // Reservations -> Flight (n:1)
             modelBuilder.Entity<Reservation>()
                         .HasOne(r => r.Flight)
-                        .WithMany()
+                        .WithMany(f => f.Reservations)
+                        .HasForeignKey()
+                        .OnDelete(DeleteBehavior.Restrict);
+
+            // Flight -> Reservations (1:n)
+            modelBuilder.Entity<Flight>()
+                        .HasMany(f => f.Reservations)
+                        .WithOne(r => r.Flight)
                         .HasForeignKey(r => r.FlightID)
                         .OnDelete(DeleteBehavior.Restrict);
 
-            // Flight -> Airplane (n:1)
+            // Reservation -> Seat (n:n)
+            modelBuilder.Entity<Seat>()
+                        .HasOne(s => s.Reservations)
+                        .WithOne()
+                        .HasForeignKey(r => r.SeatID)
+                        .OnDelete(DeleteBehavior.Restrict);
+
+            // Flight -> Seats (1:n)
+            // Airplane -> Seats (1:n)
+
+            // Airplane -> Flight (1:n)
             modelBuilder.Entity<Flight>()
                         .HasOne(f => f.Airplane)
                         .WithMany()
