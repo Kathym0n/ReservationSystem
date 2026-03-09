@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="AirlineReservationSystem.UI.NavigationBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AirlineReservationSystem.UI.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="800">
+    <Grid>
+        <Menu>
+            <MenuItem Header="Kundenportal">
+                <MenuItem Header="Login"/>
+                <MenuItem Header="New Account"/>
+                <MenuItem Header="Meine Daten"/>
+                <MenuItem Header="Meine Reservierungen"/>
+                <MenuItem Header="Logout"/>
+            </MenuItem>
+            <MenuItem Header="Flüge">
+                <MenuItem Header="Alle Flüge"/>
+                <MenuItem Header="Flug suchen"/>
+                <MenuItem Header="Reizeziele"/>
+            </MenuItem>
+            <MenuItem Header="Meine Daten"/>
+            <MenuItem Header="Meine Reservierungen"/>
+        </Menu>
+    </Grid>
+</UserControl>

@@ -1,0 +1,38 @@
+﻿<Window x:Class="AirlineReservationSystem.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirlineReservationSystem.UI"
+		xmlns:userControls="clr-namespace:AirlineReservationSystem.UI.UserControls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000">
+	
+	<!-- vordefinierte Styles für Wiederverwendung -->
+	<Window.Resources>
+
+	</Window.Resources>
+
+	<Grid>
+		<!-- Navigation -->
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Name="gcNavigation" Width="200"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+		</Grid>
+
+		<!-- Title, Content, Footer -->
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Name="grTitle" Height="15*"/>
+				<RowDefinition Height="75*"/>
+				<RowDefinition Name="grFooter" Height="10*"/>
+			</Grid.RowDefinitions>
+            <userControls:NavigationBar Grid.Row="0"/>
+            <userControls:ClearableTextbox Placeholder="Benutzername"  Grid.Row="1" Width="250" Height="40" Margin="0,0,0,100"/>
+            <userControls:PasswordTextbox Grid.Row="1" Width="250" Height="40" Margin="0,0,0,0"/>
+            <userControls:ButtonOK Grid.Row="1" Margin="0,0,0,-100"/>
+        </Grid>
+	</Grid>
+</Window>

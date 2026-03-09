@@ -4,9 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirlineReservationSystemGUI"
+        xmlns:userControls="clr-namespace:AirlineReservationSystem.UI.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Airline Reservation System" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen">
 
+    <!-- vordefinierte Styles für Wiederverwendung -->
+    <Window.Resources>
+
+    </Window.Resources>
+
+    <Grid>
+        <!-- Navigation -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Name="gcNavigation" Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <userControls:NavigationBar Grid.Column="0"/>
+            <userControls:ClearableTextbox Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+        
+        <!-- Title, Content, Footer -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Name="grTitle" Height="15*"/>
+                <RowDefinition Height="75*"/>
+                <RowDefinition Name="grFooter" Height="10*"/>
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
 </Window>
