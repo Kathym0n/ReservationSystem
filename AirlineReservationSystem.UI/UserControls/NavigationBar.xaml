@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="1000">
     <Grid>
-        <Menu>
+        <Menu VerticalAlignment="Top" Height="20">
             <MenuItem Header="Kundenportal">
-                <MenuItem Click="MenuItem_Click" Header="{Binding BoundText, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
+                <MenuItem Header="Login"/>
                 <MenuItem Header="New Account"/>
                 <MenuItem Header="Meine Daten"/>
                 <MenuItem Header="Meine Reservierungen"/>
@@ -23,5 +23,17 @@
             <MenuItem Header="Meine Daten"/>
             <MenuItem Header="Meine Reservierungen"/>
         </Menu>
+            
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Button x:Name="btnMinimize" Content="_" Width="20" Height="20"
+                    BorderBrush="LightGray" Background="Transparent" BorderThickness="0"
+                    Click="btnMinimize_Click"/>
+            <Button x:Name="btnMaximize" Content="🗖" Width="20" Height="20"
+                    BorderBrush="LightGray" Background="Transparent" BorderThickness="0"
+                    Click="btnMaximize_Click"/>
+            <Button x:Name="btnClose" Content="X" Width="20" Height="20"
+                    BorderBrush="LightGray" Background="Transparent" BorderThickness="0"
+                    Click="btnClose_Click"/>
+        </StackPanel>
     </Grid>
 </UserControl>

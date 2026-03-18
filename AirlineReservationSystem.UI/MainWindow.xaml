@@ -5,21 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirlineReservationSystem.UI"
 		xmlns:userControls="clr-namespace:AirlineReservationSystem.UI.UserControls"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
-	
-	<!-- vordefinierte Styles für Wiederverwendung -->
-	<Window.Resources>
+        mc:Ignorable="d" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Title="Airline Reservation System" Height="600" Width="1000">
 
-	</Window.Resources>
-
-	<Grid>
+    <Grid>
 		<!-- Navigation -->
 		<Grid>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Name="gcNavigation" Width="200"/>
+				<ColumnDefinition x:Name="gcNavigation" Width="200"/>
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
+            
 		</Grid>
 
 		<!-- Title, Content, Footer -->
@@ -30,9 +26,14 @@
 				<RowDefinition Name="grFooter" Height="10*"/>
 			</Grid.RowDefinitions>
             <userControls:NavigationBar Grid.Row="0"/>
-            <userControls:ClearableTextbox Placeholder="Benutzername"  Grid.Row="1" Width="250" Height="40" Margin="0,0,0,100"/>
-            <userControls:PasswordTextbox Grid.Row="1" Width="250" Height="40" Margin="0,0,0,0"/>
-            <userControls:ButtonOK Grid.Row="1" Margin="0,0,0,-100"/>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel x:Name="spLogin" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Grid.Row="1" HorizontalAlignment="Center" Text="Login" Name="tbHeader" Margin="40" FontSize="50"/>
+                <userControls:ClearableTextbox Placeholder="E-Mail" Width="250" Height="40" Margin="0,0,0,0"/>
+				<userControls:PasswordTextbox  Width="250" Height="40" Margin="0,0,0,0"/>
+				<userControls:ButtonOK Margin="0,0,0,0"/>
+            </StackPanel>
+            </ScrollViewer>
         </Grid>
 	</Grid>
 </Window>

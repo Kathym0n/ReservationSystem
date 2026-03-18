@@ -27,23 +27,32 @@ namespace AirlineReservationSystem.UI.UserControls
             InitializeComponent();
         }
 
-        private string _boundText;
-
-        public  event PropertyChangedEventHandler? PropertyChanged;
-        public string BoundText
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            get { return _boundText; }
-            set 
-            { 
-                _boundText = value;
-                OnPropertyChanged("BoundText");
+            Application.Current.Shutdown();
+        }
+
+        private void btnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+            if (parentWindow != null)
+            {
+
+                if (parentWindow.WindowState == WindowState.Maximized)
+                {
+                    parentWindow.WindowState = WindowState.Normal;
+                }
+                else parentWindow.WindowState = WindowState.Maximized;
             }
         }
 
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
-            BoundText = "Logout";
+            Window parentWindow = Window.GetWindow(this);
+            if (parentWindow != null)
+            {
+                parentWindow.WindowState = WindowState.Minimized;
+            }
         }
     }
 }
