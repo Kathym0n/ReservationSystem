@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,27 @@ namespace AirlineReservationSystem.UI.UserControls
     {
         public NavigationBar()
         {
+            DataContext = this;
             InitializeComponent();
+        }
+
+        private string _boundText;
+
+        public  event PropertyChangedEventHandler? PropertyChanged;
+        public string BoundText
+        {
+            get { return _boundText; }
+            set 
+            { 
+                _boundText = value;
+                OnPropertyChanged("BoundText");
+            }
+        }
+
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            BoundText = "Logout";
         }
     }
 }

@@ -9,7 +9,7 @@
     <Grid>
         <Menu>
             <MenuItem Header="Kundenportal">
-                <MenuItem Header="Login"/>
+                <MenuItem Click="MenuItem_Click" Header="{Binding BoundText, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
                 <MenuItem Header="New Account"/>
                 <MenuItem Header="Meine Daten"/>
                 <MenuItem Header="Meine Reservierungen"/>
