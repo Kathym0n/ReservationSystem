@@ -25,7 +25,7 @@
         </Menu>
             
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Button x:Name="btnMinimize" Content="_" Width="20" Height="20"
+            <Button x:Name="btnMinimize" Content="_" Width="10" Height="20"
                     BorderBrush="LightGray" Background="Transparent" BorderThickness="0"
                     Click="btnMinimize_Click"/>
             <Button x:Name="btnMaximize" Content="🗖" Width="20" Height="20"

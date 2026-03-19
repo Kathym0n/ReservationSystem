@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AirlineReservationSystem.UI"
 		xmlns:userControls="clr-namespace:AirlineReservationSystem.UI.UserControls"
         mc:Ignorable="d" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Title="Airline Reservation System" Height="600" Width="1000">
+        Title="Airline Reservation System" Height="600" Width="1000" Background="LightBlue">
 
     <Grid>
 		<!-- Navigation -->
